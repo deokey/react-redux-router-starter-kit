@@ -7,7 +7,7 @@ import LoginContainer from './containers/auth/Login.container';
 import ForgotContainer from './containers/auth/Forgot.container';
 import ResetPasswordContainer from './containers/auth/ResetPassword.container';
 import RegisterContainer from './containers/user/Register.container';
-import OverviewContainer from 'containers/overview/Overview.container';
+import HomeContainer from 'containers/user/Home.container';
 import store, { history } from './store';
 
 class App extends Component {
@@ -24,9 +24,12 @@ class App extends Component {
                 component={ResetPasswordContainer}
               />
               <Route exact path="/forgot" component={ForgotContainer} />
-              <PrivateRoute exact path="/" component={OverviewContainer} />
+              <PrivateRoute exact path="/" component={HomeContainer} />
               <PrivateRoute path="/register" component={RegisterContainer} />
-              <PrivateRoute path="*" render={ ( ) => <div> NOT FOUND PAGE</div>} />
+              <PrivateRoute
+                path="*"
+                render={() => <div> NOT FOUND PAGE</div>}
+              />
             </Switch>
           </React.Fragment>
         </ConnectedRouter>

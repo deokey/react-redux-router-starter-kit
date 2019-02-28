@@ -1,6 +1,5 @@
 import { createActions } from 'redux-actions';
 import Fetcher from 'utils/fetcher';
-import { userUrl } from 'utils/constants';
 import { errorNetwork } from 'utils/errorHandler';
 
 export const { userPending, userFailure, userSuccess } = createActions({
@@ -14,7 +13,7 @@ export const register = userData => async dispatch => {
   try {
     dispatch(userPending({ namespace }));
     const fetcher = new Fetcher();
-    const response = await fetcher.post(userUrl, userData);
+    const response = await fetcher.post('URL', userData);
     dispatch(userSuccess({ namespace, response }));
   } catch (err) {
     const error = errorNetwork(err);
@@ -27,7 +26,7 @@ export const getAll = () => async dispatch => {
   try {
     dispatch(userPending({ namespace }));
     const fetcher = new Fetcher();
-    const { rows } = await fetcher.get(userUrl);
+    const { rows } = await fetcher.get('URL');
     dispatch(userSuccess({ namespace, response: rows }));
     return rows;
   } catch (err) {
@@ -41,7 +40,7 @@ export const deleteUser = id => async (dispatch, getState) => {
   try {
     dispatch(userPending({ namespace }));
     const fetcher = new Fetcher();
-    const response = await fetcher.remove(`${userUrl}/${id}`);
+    const response = await fetcher.remove(`'URL'/${id}`);
     dispatch(userSuccess({ namespace, response }));
     dispatch(getAll());
   } catch (err) {
@@ -55,7 +54,7 @@ export const getMe = () => async dispatch => {
   try {
     dispatch(userPending({ namespace }));
     const fetcher = new Fetcher();
-    const response = await fetcher.get(`${userUrl}/me`);
+    const response = await fetcher.get(`'URL'/me`);
     dispatch(userSuccess({ namespace, response }));
   } catch (err) {
     const error = errorNetwork(err);
@@ -68,7 +67,7 @@ export const contact = userContact => async dispatch => {
   try {
     dispatch(userPending({ namespace }));
     const fetcher = new Fetcher();
-    const response = await fetcher.post(`${userUrl}/contact`, userContact);
+    const response = await fetcher.post(`'URL'/contact`, userContact);
     dispatch(userSuccess({ namespace, response }));
   } catch (err) {
     const error = errorNetwork(err);

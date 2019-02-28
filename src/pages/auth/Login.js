@@ -5,11 +5,8 @@ import { AUTH_BG } from 'styles/variables';
 
 export default class Login extends Component {
   static propTypes = {
-    login: PropTypes.func.isRequired,
-    message: PropTypes.string,
     isAuthenticated: PropTypes.bool,
     goTo: PropTypes.func,
-    loading: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -17,10 +14,6 @@ export default class Login extends Component {
   }
 
   render() {
-    return (
-      <StyledAuth background={AUTH_BG}>
-        LOGIN
-      </StyledAuth>
-    );
+    return <StyledAuth background={AUTH_BG}>LOGIN</StyledAuth>;
   }
 }

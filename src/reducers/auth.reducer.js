@@ -20,6 +20,7 @@ const AuthReducer = handleActions(
           ...state[namespace],
           loading: false,
           payload: response,
+          message: response.message,
         },
       };
     },
@@ -30,6 +31,7 @@ const AuthReducer = handleActions(
         [namespace]: {
           ...state[namespace],
           error,
+          message: error.message,
           loading: false,
         },
       };
