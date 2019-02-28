@@ -1,14 +1,13 @@
 {
-  "name": "odin-frontend",
+  "name": "react-redux-router-starter-kit",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "engines": {
-    "node": "11.9.0"
+    "node": ">=11.9.0"
   },
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
-    "@u-dev/ui-im-core": "^0.4.16",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -77,8 +76,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "deploy:dev": "yarn build && aws s3 sync build/ s3://odin-dev.unison.com --delete && aws cloudfront create-invalidation --distribution-id EHCENGIN0UDGS --paths /index.html"
+    "test": "node scripts/test.js"
   },
   "browserslist": [
     ">0.2%",
