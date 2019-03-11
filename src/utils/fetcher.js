@@ -22,10 +22,6 @@ class Fetcher {
     this.dispatch = false;
   }
 
-  parseData({ data }) {
-    return data;
-  }
-
   /**
    *  add headers
    * @param { Object } headersArray
@@ -50,7 +46,7 @@ class Fetcher {
   async get(endpoint) {
     const { data } = await axios.get(endpoint, this.config);
 
-    return this.parseData(data);
+    return data;
   }
 
   /**
@@ -61,7 +57,7 @@ class Fetcher {
    */
   async post(endpoint, payload) {
     const { data } = await axios.post(endpoint, payload, this.config);
-    return this.parseData(data);
+    return data;
   }
 
   /**
@@ -72,7 +68,7 @@ class Fetcher {
    */
   async put(endpoint, payload) {
     const { data } = axios.put(endpoint, payload, this.config);
-    return this.parseData(data);
+    return data;
   }
 
   /**
